@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #00677D;
+            padding: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Lexend', sans-serif;
+            color: #ffffff;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            line-height: 1.5;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 20px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #00677D #f0f0f0;
+            font-size: 36px;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 40px;
+            flex: 1;
+            font-family: 'Lexend', sans-serif;
+            animation-name: slide-in;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes slide-in {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .image-container {
+            flex-shrink: 0;
+            width: 600px;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation-name: fade-in;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .border-container {
+            display: flex;
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .border-container > * {
+            padding: 30px;
+        }
+
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #00677D;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>TruthTracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="/fake_news_finder" style="color: #ffffff; text-decoration: none;font-size:26px;">Fake News Detection</a></li>
+                    <li><a href="/fake_video_detector" style="color: #ffffff; text-decoration: none;font-size:26px;">Fake Video Detection</a></li>
+                    <li><a href="/working" style="color: #ffffff; text-decoration: none;font-size:26px;">Working</a></li>
+                    <li><a href="/privacy_policy" style="color: #ffffff; text-decoration: none;font-size:26px;">Privacy Policy</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            <div class="border-container">
+                <div class="description">
+                    <h2>About Fake News and Fake Video Detection</h2>
+                    <p>Welcome to our website dedicated to combating misinformation and fake content online. With the rise of digital media, it has become increasingly challenging to distinguish between genuine news and fabricated stories, as well as authentic videos and manipulated footage. Our platform aims to address this issue by providing powerful tools for detecting and identifying fake news and videos.</p>
+                </div class="border-container">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

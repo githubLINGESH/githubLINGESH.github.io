@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #00677D;
+            padding: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Lexend', sans-serif;
+            color: #ffffff;
+        }
+
+        .header-container nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-container nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 26px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            padding: 40px;
+        }
+
+        main h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        main label {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 20px; /* Increased margin-bottom for spacing */
+        }
+
+        main input[type="file"] {
+            font-size: 24px;
+            width: 80%;
+            padding: 15px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            margin-bottom: 15px; /* Increased margin-bottom for spacing */
+        }
+
+        main input[type="file"] {
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        main input[type="file"]::before {
+            content: "\f07b";
+            font-family: "Font Awesome 5 Free";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00677D;
+            font-size: 36px;
+            pointer-events: none;
+        }
+
+        button[type="submit"] {
+            background-color: #00677D;
+            color: #ffffff;
+            font-size: 30px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-panel {
+            margin-top: 40px;
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            margin-bottom: 20px;
+        }
+
+        .video-details {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>TruthTracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="/fake_news_finder" style="font-size:32px">Fake News Detection</a></li>
+                    <li><a href="/working" style="font-size:32px">Working</a></li>
+                    <li><a href="/privacy_policy" style="font-size:32px">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+            <h1>Upload and detect deepfake videos</h1>
+            <form id="upload-form">
+            <label for="video-file">Upload MP4:</label>
+            <div>
+                <input type="file" id="video-file" name="video-file" accept="video/mp4">
+            </div>
+            <button type="submit">Detect</button>
+            </form>
+        
+            <div class="video-panel" id="video-panel" style="display: none;">
+            <video class="video-frame" id="video-frame" controls></video>
+            <div class="video-details" id="video-details"></div>
+            </div>
+        </main>
+        <script>
+            document.getElementById('upload-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var fileInput = document.getElementById('video-file');
+                var videoPanel = document.getElementById('video-panel');
+                var videoFrame = document.getElementById('video-frame');
+                var videoDetails = document.getElementById('video-details');
+        
+                var file = fileInput.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        videoFrame.src = e.target.result;
+                        videoPanel.style.display = 'block';
+                        videoDetails.innerHTML = 'Video Duration: 00:00:00<br>Video Result: Processing...';
+        
+                        var formData = new FormData();
+                        formData.append('video-file', file);
+                        fetch('/fake_video_detector', {  // Corrected endpoint URL
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            var duration = formatTime(data.duration);
+                            var classification = data.classification;
+                            var score = data.confidence;
+        
+                            videoDetails.innerHTML = 'Video Duration: ' + duration + '<br>Video Result: ' + classification + '<br>Score: ' + score;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            videoDetails.innerHTML = 'Error occurred during video processing.';
+                        });
+        
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        
+            function formatTime(seconds) {
+                var hours = Math.floor(seconds / 3600);
+                var minutes = Math.floor((seconds % 3600) / 60);
+                seconds = seconds % 60;
+        
+                return padTime(hours) + ':' + padTime(minutes) + ':' + padTime(seconds);
+            }
+        
+            function padTime(time) {
+                return String(time).padStart(2, '0');
+            }
+        </script>
+        
+    
+</body>
+</html>

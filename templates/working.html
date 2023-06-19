@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #00677D;
+            padding: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Lexend', sans-serif;
+            color: #ffffff;
+        }
+
+        .header-container nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-container nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 26px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 160px); /* Adjusted margin for the header */
+            background-color: #f0f0f0;
+            padding: 40px;
+        }
+
+        main h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        main p {
+            font-size: 39px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        main ol {
+            font-size: 38px; /* Increased font size */
+            margin-bottom: 20px;
+        }
+        main p.note {
+            font-weight: bold; /* Added bold font-weight */
+        }
+
+        main p.underline {
+            text-decoration: underline; /* Added underline text-decoration */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>TruthTracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="/fake_news_finder" style="font-size:32px">Fake News Detection</a></li>
+                    <li><a href="/fake_video_detector" style="font-size:32px">Fake Video Detection</a></li>
+                    <li><a href="/privacy_policy" style="font-size:32px">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>How Fake Video and Fake News Detection Works</h1>
+        <p>
+            Our fake video and fake news detection system is designed to help you identify and distinguish between real and manipulated content. Here's how it works:
+        </p>
+        <ol>
+            <li>Upload Video URL or MP4 File: Use the provided input fields to either provide the URL of the video you want to analyze or upload the MP4 file directly.</li>
+            <li>Analyze the Content: Click on the "Detect" button to initiate the analysis process.</li>
+            <li>Processing and Analysis: Our system will process the video or news content using advanced algorithms and techniques to identify any signs of manipulation or falsehood.</li>
+            <li>Results and Verification: Once the analysis is complete, the system will provide you with the results. It will indicate whether the video or news content is likely to be genuine or if there are indications of manipulation or misinformation.</li>
+            <li>Make Informed Decisions: Based on the results, you can use the information to make informed decisions about the authenticity and trustworthiness of the content.</li>
+        </ol>
+        <p font-weight: bold>Note: </p>
+        <p>
+            It's important to note that while our system employs state-of-the-art techniques, it may not be 100% foolproof. It's always recommended to exercise critical thinking and verify the information from multiple reliable sources before drawing conclusions.
+        </p>
+    </main>
+</body>
+</html>
