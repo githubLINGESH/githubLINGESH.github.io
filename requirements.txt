@@ -3,7 +3,7 @@ opencv-python
 numpy
 imageio
 google-api-python-client
-tensorflow
+tensorflow v2.13.0
 keras
 transformers
 Pillow
