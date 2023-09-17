@@ -1097,3 +1097,123 @@ body {
   opacity: 1;
   text-align: left;
 }
+    .header {
+        background-color: #00677D;
+        padding: 40px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header-container h1 {
+        margin: 0;
+        font-size: 60px;
+        font-weight: bold;
+        font-family: 'Lexend', sans-serif;
+        color: #ffffff;
+    }
+
+    .header-container ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-container li {
+        margin-left: 20px;
+    }
+
+    .header-container li:first-child {
+        margin-left: 0;
+    }
+
+    .header-container li a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 24px;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+        padding: 40px;
+    }
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Apply a background color and center the content */
+        .body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Style the container */
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the form elements */
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .label {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+        }
+
+        .button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    

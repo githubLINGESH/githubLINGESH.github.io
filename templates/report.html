@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPORT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<style>
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+   
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #00677D;
+            padding: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 80px;
+        }
+
+        .header-container {
+            background-color:#00677D;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .header-container ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header-container li {
+            margin-left: 20px;
+        }
+
+        .header-container li:first-child {
+            margin-left: 0;
+        }
+
+        .header-container li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="header-container">
+        <h1 style="margin-right:50px;">REPORT</h1>
+        <nav>
+        <ul style="justify-content:space-between">
+            <li><a href="/fake_news_finder" style="font-size:32px;margin-right:25px;">Fake News Detection</a></li>
+            <li><a href="/fake_video_detector" style="font-size:32px;margin-right:25px;">Fake Video Detection</a></li>
+            <li><a href="/working" style="font-size:32px;margin-right:25px;">Working</a></li>
+            <li><a href="/privacy_policy" style="font-size:32px;margin-right:25px;">Privacy Policy</a></li>
+        </ul>
+    </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Report User</h1>
+    <form method="POST" action="/report">
+        <label for="reportUser">Report User:</label>
+        <input type="text" id="reportUser" name="reportUser" required>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

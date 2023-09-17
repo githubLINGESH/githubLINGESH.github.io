@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<style>
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
         body {
             display: flex;
             flex-direction: column;
@@ -33,7 +39,6 @@
             margin: 0;
             font-size: 60px;
             font-weight: bold;
-            font-family: 'Lexend', sans-serif;
             color: #ffffff;
         }
 
@@ -108,7 +113,7 @@
             overflow: hidden;
         }
 
-        .border-container > * {
+        .border-container{
             padding: 30px;
         }
 
@@ -129,14 +134,15 @@
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <h1>TruthTracker</h1>
+        <div class="header-container" style="align-items:center; justify-content:space-between;">
+            <h1 style="margin-right:50px;">TruthTracker</h1>
             <nav>
                 <ul>
                     <li><a href="/fake_news_finder" style="color: #ffffff; text-decoration: none;font-size:26px;">Fake News Detection</a></li>
                     <li><a href="/fake_video_detector" style="color: #ffffff; text-decoration: none;font-size:26px;">Fake Video Detection</a></li>
                     <li><a href="/working" style="color: #ffffff; text-decoration: none;font-size:26px;">Working</a></li>
                     <li><a href="/privacy_policy" style="color: #ffffff; text-decoration: none;font-size:26px;">Privacy Policy</a></li>
+                    <li><a href="/report" style="font-size:32px; text-decoration:none; color:white;">Report</a></li>
 
                 </ul>
             </nav>

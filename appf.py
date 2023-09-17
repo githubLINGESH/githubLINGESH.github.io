@@ -1,5 +1,4 @@
 import html
-
 import cv2
 import imageio
 import numpy as np
@@ -19,6 +18,10 @@ app = Flask(__name__)
 def home():
     return render_template('front.html')
 
+@app.route('/report')
+def report():
+    return render_template('report.html')
+
 # Route for the fake_news_finder page
 @app.route('/fake_news_finder', methods=['GET', 'POST'])
 def fake_news_finder():
@@ -27,7 +30,7 @@ def fake_news_finder():
         keyword = request.form['keyword']
         rate_limit = int(request.form['rate_limit'])
         
-        api_key = "AIzaSyBPHs1Pq49RrKiW1BIFl2uJHYrwa7cpeyY"  # Replace with your YouTube API key
+        api_key = "AIzaSyBPHs1Pq49RrKiW1BIFl2uJHYrwa7cpeyY"
         youtube = build('youtube', 'v3', developerKey=api_key)
         
         model_name = "gpt2"
@@ -81,18 +84,15 @@ def fake_news_finder():
             if "items" in comment_response:
                 for comment in comment_response["items"]:
                     comment_text = comment["snippet"]["topLevelComment"]["snippet"]["textDisplay"]
-                    comment_text = html.unescape(comment_text)  # Convert HTML entities to plain text
+                    comment_text = html.unescape(comment_text)
                     comments.append(comment_text)
 
         prompt = f"Is it true that {keyword}?"
         inputs = tokenizer.encode(prompt, return_tensors="tf", add_special_tokens=True)
 
         # Generate response from GPT-2 model
-        outputs = model.generate(inputs, max_length=25, num_return_sequences=1, pad_token_id=tokenizer.eos_token_id)
-
-        # Find the last generated sequence
-        for output in outputs:
-            response = tokenizer.decode(output, skip_special_tokens=True)
+        output = model.generate(inputs, max_length=50, do_sample=True, top_k=50, top_p=0.95, pad_token_id=tokenizer.eos_token_id)
+        response = tokenizer.decode(output[0], skip_special_tokens=True)
 
         return render_template('fake_news_finder.html', videos=videos, comments=comments, response=response)
 
@@ -197,6 +197,20 @@ def classify_video(predictions, threshold=0.5):
         return 'fake', fake_score
     else:
         return 'real', real_score
+    
+    
+# Define the route to handle form submissions
+@app.route('/report', methods=['POST'])
+def report_user():
+    if request.method == 'POST':
+        # Get the submitted report user
+        report_user = request.form.get('reportUser')
+
+        # Save the report user to a file (you can use any format you prefer)
+        with open('report_users.txt', 'a') as file:
+            file.write(report_user + '\n')
+
+        return "Report submitted successfully."
 
 if __name__ == '__main__':
     # Load the pre-trained model
