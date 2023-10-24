@@ -1,0 +1,37 @@
+project
+├── frontend
+|   ├── pages
+|   |   ├── index.js
+|   |   ├── news.js
+|   |   ├── video.js
+|   |   ├── audio.js
+|   |   ├── image.js
+|   |   ├── profile.js
+|   |   ├── login.js
+|   ├── components
+|   |   ├── header.js
+|   |   ├── footer.js
+|   |   ├── form.js
+|   ├── utils
+|   |   ├── apiClient.js
+|   |   ├── clerk.js
+|   ├── styles
+├── backend
+|   ├── app.py
+|   ├── views.py
+|   ├── models.py
+|   ├── utils.py
+├── models
+|   ├── news_model.py
+|   ├── video_model.py
+|   ├── audio_model.py
+|   ├── image_model.py
+├── database
+|   ├── init_db.py
+|   ├── models.py
+├── scripts
+|   ├── train_news_model.py
+|   ├── train_video_model.py
+|   ├── deploy.py
+├── docker-compose.yml
+├── requirements.txt
